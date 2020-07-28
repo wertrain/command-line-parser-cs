@@ -112,25 +112,6 @@ namespace CommandLineParser
         /// 
         /// </summary>
         public T Value { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Dictionary<string, bool> ExistsOptionDictionary { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="propertyInfo"></param>
-        /// <returns></returns>
-        public bool ExistsOption(PropertyInfo propertyInfo)
-        {
-            if (ExistsOptionDictionary.ContainsKey(propertyInfo.PropertyType.Name))
-            {
-                return ExistsOptionDictionary[propertyInfo.PropertyType.Name];
-            }
-            return false;
-        }
     }
 
     /// <summary>
@@ -296,21 +277,20 @@ namespace CommandLineParser
                     {
                         string param = string.Empty;
 
-                        if (args.Count() > ++i)
+                        if (args.Count() > i + 1)
                         {
-                            param = args.ElementAt(i);
+                            param = args.ElementAt(i + 1);
                         }
 
                         try
                         {
-                            if (!ParserUtility.SetValueToProperty<T>(property, value, param))
+                            if (ParserUtility.SetValueToProperty<T>(property, value, param))
                             {
-                                --i;
+                                ++i;
                             }
                         }
                         catch
                         {
-                            --i;
                             resultTag = ParserResultType.NotParsed;
                         }
                     }
