@@ -84,7 +84,7 @@ namespace CommandLineParser
         /// <summary>
         /// 
         /// </summary>
-        NotParsed = 1
+        NotParsed
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ namespace CommandLineParser
                 case "Byte": property.SetValue(value, ConvertValue<byte>(param)); break;
                 case "SByte": property.SetValue(value, ConvertValue<sbyte>(param)); break;
                 case "Char": property.SetValue(value, ConvertValue<char>(param)); break;
-                case "Decimal": property.SetValue(value, ConvertValue<Decimal>(param)); break;
+                case "Decimal": property.SetValue(value, ConvertValue<decimal>(param)); break;
                 case "Double": property.SetValue(value, ConvertValue<double>(param)); break;
                 case "Single": property.SetValue(value, ConvertValue<float>(param)); break;
                 case "Int32": property.SetValue(value, ConvertValue<int>(param)); break;
@@ -243,7 +243,8 @@ namespace CommandLineParser
                     if (command == HelpLongName)
                     {
                         ShowHelp<T>();
-                        return null;
+
+                        return new ParserResult<T>(ParserResultType.Parsed, new T());
                     }
 
                     if (longNameDictionary.ContainsKey(command))
