@@ -37,7 +37,7 @@ class Program
 ```
 
 ```shell
-> sample.exe -t hello --int 100 -d 123.456
+> sample.exe -s hello --int 100 -d 123.456
 > string value: hello
 > int value: 100
 > double value: 123.456
