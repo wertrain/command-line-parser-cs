@@ -37,7 +37,6 @@ namespace CommandLineParserTest
             public decimal DecimalValue { get; set; }
             [Option('w', "bool", Required = false, HelpText = "Boolean Value")]
             public bool BooleanValue { get; set; }
-
         }
 
         [TestMethod]

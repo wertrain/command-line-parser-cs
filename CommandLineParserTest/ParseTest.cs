@@ -39,5 +39,16 @@ namespace CommandLineParserTest
             Assert.IsTrue(result.Tag == ParserResultType.Parsed);
             Assert.AreNotEqual("TestText", result.Value.Text);
         }
+
+        [TestMethod]
+        public void TestParse_ErrorWrongParam()
+        {
+            var args = new List<string>();
+            args.Add("--int");
+            args.Add("TestText");
+            var result = Parser.Parse<Options>(args);
+            Assert.IsTrue(result.Tag == ParserResultType.NotParsed);
+            Assert.AreNotEqual("int", result.Value.IntValue);
+        }
     }
 }
