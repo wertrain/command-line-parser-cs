@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ParseTest.cs" />
+    <Compile Include="NullableTypesTest.cs" />
     <Compile Include="TypesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
