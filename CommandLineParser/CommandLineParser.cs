@@ -199,6 +199,18 @@ namespace CommandLineParser
         /// <typeparam name="T"></typeparam>
         /// <param name="args"></param>
         /// <returns></returns>
+        public static ParserResult<T> Parse<T>(string args) where T : new()
+        {
+            var enumerable = args.Split();
+            return Parse<T>(enumerable);
+        }
+
+        /// <summary>
+        /// Parse command line
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static ParserResult<T> Parse<T>(IEnumerable<string> args) where T : new()
         {
             if (args.Count() == 0)
